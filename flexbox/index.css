@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    color: chartreuse;
+    background-color:darkslategrey;
+}
+.container {
+width: 80%;
+height: 80%;
+margin: 24px auto;
+background: #ccc;
+display: flex;
+flex-wrap: wrap;
+border: 1px solid chartreuse;
+justify-content: space-around;
+}
+
+.item {
+width: 200px;
+height: 200px;
+background-color: slategray;
+border: 1px solid chartreuse;;
+}
