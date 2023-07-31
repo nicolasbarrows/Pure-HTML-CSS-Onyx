@@ -1,0 +1,785 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Mrs+Saint+Delafield&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+@media screen and (min-width: 350px) {
+  /* VIDEO BACKGROUND */
+  .video-container {
+    position: fixed;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background: #ccc;
+    overflow: hidden;
+    clip-path: 0 0;
+    transform: translatez(0);
+    z-index: 0;
+  }
+
+  .video-container video {
+    transform: translatez(0);
+    position: absolute;
+    top: -100%;
+    bottom: -100%;
+    left: -100%;
+    right: -100%;
+
+    margin: auto;
+
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .video-overlay {
+    position: fixed;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background-color:#25282a;
+    opacity: .25;
+    z-index: 1;
+  }
+
+  /* THIS IS ALL TO GET THE HEADER and SLIDING MENU FRAMEWORK WORKING */
+
+  .navbar {
+    width: 100vw;
+    /*background: white;*/
+    box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+  }
+
+  .nav-container {
+    display: block;
+    /*height: 50px;*/
+    height:100vh;
+    width: 100vw;
+    position: fixed;
+    z-index:4;
+  }
+
+  .navbar-flex {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content: flex-end;
+    position:absolute;
+    z-index:4;
+    width: 100vw;
+    }
+  
+  .navbar .nav-container li {
+    list-style: none;
+  }
+
+  .navbar .nav-container a {
+    text-decoration: none;
+    color: #0e2431;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 3rem;
+
+  }
+
+  .navbar .nav-container a:hover {
+    font-weight: bolder;
+  }
+
+  .nav-container .checkbox {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 32px;
+    top: 20px;
+    right: 20px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .nav-container .hamburger-lines {
+    /* display: block; */
+    height: 26px;
+    width: 32px;
+    position: absolute;
+    top: 17px;
+    right: 20px;
+    z-index: 4; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .nav-container .hamburger-lines .line {
+    display: block;
+    height: 1px;
+    width: 100%;
+    border-radius: 10px;
+    background: #eee;
+  }
+
+  .nav-container .hamburger-lines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .nav-container .hamburger-lines .line2 {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .nav-container .hamburger-lines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navbar .menu-items {
+    position:absolute;
+    background: white;
+    height: 100vh;
+    width: 100vw;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: row;
+    align-items:start;
+    padding-top: 250px;
+    padding-left: 50px;
+    padding-right:50px;
+    text-transform: uppercase;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    transition: transform 0.5s ease-in-out;
+    text-align: left;
+    z-index:2;
+    overflow-y:scroll;
+  }
+
+.navbar .menu-columns {
+  padding: 25px;
+ }
+
+  .nav-container input[type="checkbox"]:checked ~ .menu-items {
+    transform: translateX(0) !important; 
+  }
+
+  .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+    transform: rotate(45deg);
+    background: black;
+  }
+
+  .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+    transform: scaleY(0);
+  }
+
+  .nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+    transform: rotate(-45deg);
+    background: black;
+  }
+
+  .nav-container input[type="checkbox"]:checked ~ .logo {
+    color: black;
+  }
+
+  #navbar-marquee {
+    visibility:hidden;
+  }
+
+  .menu-primary {
+    font-family: "Gloock", serif;
+    color: #0e2431;
+    font-size: 2.5rem;
+  }
+
+  .menu-items hr {
+    max-width: 15px;
+  }
+
+  .logo {
+    position:absolute;
+    top: 5px;
+    left: 40vw;
+    right:40vw;
+    font-size: 1.2rem;
+    color: white;
+    z-index: 5;
+  }
+
+  form {
+    visibility:hidden;
+    color: black;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+    width: 20vw;
+    min-width: 150px;
+  }
+
+  input[type="search"] {
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    max-width: 200px;
+  }
+
+  form.nosubmit {
+    border: none;
+    padding: 0;
+  }
+
+  input.nosubmit {
+    border: 1px solid #555;
+    width: 100%;
+    padding: 9px 4px 9px 40px;
+    background: transparent
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+      no-repeat 13px center;
+  }
+
+  #login {
+    padding:15px;
+  }
+
+  /* END NAVIGATION FRAMEWORK */
+
+
+  #video-header {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:100vw;
+    height:100vh;
+    z-index: 1;
+    
+  }
+
+  #header-text {
+    width:fit-content;
+    max-width: 85vw;
+    padding-left: 0vw;
+    padding-bottom: 0vw
+  }
+
+  .typed {
+    padding-top:100px;
+    font-size: 3rem;
+    text-align:center;
+    color:#eee;
+    font-family: "Gloock", serif;
+
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+ 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
+  #header-text-bottom {
+    width:100vw;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    }
+  #signature {
+    text-align:center;
+    padding:25px;
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size:100px;
+    color:white;
+
+    animation: fadeInAnimation ease 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  #scroll {
+    text-align:center;
+    color:white;
+    padding:25px;
+
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }  
+
+  /* PRODUCT HIGHLIGHTS SECTION */
+  .productHighlight {
+    display: flex;
+    width: 100vw;
+    height: 150vh;
+    position: relative;
+    background-position: top right;
+    background-size: 200vw;
+    background-repeat: no-repeat;
+  }
+
+  .productHighlight-text {
+    position: relative;
+    top: 120vw;
+    font-size: 1em;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    width: 90vw;
+    height: fit-content;
+    color: #ddd;
+  }
+
+  .productHighlight h2 {
+    font-family: "Gloock", serif;
+    font-size: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  .productHighlight a {
+    display: inline-block;
+    background: black;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    margin: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    width: fit-content;
+  }
+
+  #doyenne {
+    background-position: top right;
+    background-image: url(https://retail.onyxcontent.com/media/pages/globals/homepage/a8bbdf8c2d-1682087847/doyenne.jpg);
+    background-color: rgb(121, 121, 237);
+    left: 0%;
+  }
+
+  #onyxTealight {
+    background-position: top left;
+    background-image: url(https://retail.onyxcontent.com/media/pages/globals/homepage/5e1c8a05b1-1682087849/tea_1.jpg);
+    background-color: #25282a;
+    flex-flow: row-reverse nowrap;
+  }
+
+  #subscribeAndSave {
+    color:#0e2431;
+    background-color: #dca466;
+    background-position: top left;
+    background-image: url(https://retail.onyxcontent.com/media/pages/globals/homepage/b42bb7ea6f-1679509910/onyx_sub_1.jpg);
+    flex-flow: row-reverse nowrap;
+  }
+
+  /* Product Carousel section */
+
+ 
+#productCarousel-header {
+    position:relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:center;
+    height: 15vh;
+  }
+
+  #productCarousel-header p {
+    display:inline-block;
+    font-size:4rem;
+    text-align:center;
+    padding:30px;
+  }
+
+  .productCarousel {
+    position:relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x:scroll;
+    height: 75vh;
+  }
+
+  .productCarousel .slides {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:fit-content;
+  }
+
+  .productCarousel img {
+    height:400px;
+    width:400px;
+  }
+  .slideInfo {
+    background:rgba(50, 50, 50, .5);
+    padding:30px
+  }
+  .productButton {
+    display:inline-block;
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0);
+    color: #eee;
+    outline: #eee solid 2px;
+    padding:5px;
+  }
+  .slideInfo a:hover {
+    padding:10px;
+  }
+  .slides p {
+    color: #eee;
+    text-align: center;
+
+  }
+
+  /* gallery section */
+
+  .gallery-section {
+    position:relative;
+    z-index: 1;
+    display: block;
+    background-color: #eee;
+    width: 100vw;
+    height: fit-content;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .gallery {
+    width: 90vw;
+    height: 360vw;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 25% 25% 25%;
+    gap: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+  .parent {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .child {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.3s;
+    z-index: 2;
+  }
+
+  .gallery p {
+    position: absolute;
+    bottom: -20px;
+    left: -3px;
+    color: #eee;
+    font-family: "Gloock", serif;
+    font-size: 5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 3;
+  }
+
+  .child:hover {
+    transform: scale(1.2);
+  }
+
+  #apparel {
+    grid-column: 1;
+    grid-row: 1 / 2;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/5badf3c709-1663618427/hp-tile-apparel.jpg");
+    background-color: rgb(202, 98, 200);
+  }
+
+  #tea {
+    grid-column: 1;
+    grid-row: 2 / 3;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/542276090a-1663618440/hp-tile-tea.jpg");
+    background-color: rgb(242, 231, 81);
+  }
+
+  #bulk {
+    grid-column: 1;
+    grid-row: 3 / 4;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/139a25974b-1663618478/hp-tile-bulk.jpg");
+    background-color: rgb(82, 82, 225);
+  }
+
+  #chocolate {
+    grid-column: 1;
+    grid-row: 4 / 5;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/daf32d9213-1663618496/hp-tile-choco.jpeg");
+    background-color: rgb(142, 83, 60);
+  }
+
+ /* FOOTER */
+ .footer {
+  width:100vw;
+  height:fit-content;
+  position:relative;
+  z-index: 1;
+  background-color: rgba(92, 92, 92, .5);
+  color:#eee;
+}
+
+.footer-flex {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-flex p {
+  text-align: center;
+}
+
+#footerColumn1 {
+  margin-top:4vmax;
+  padding: 2vmax;
+}
+#footerColumn2 {
+  padding: 2vmax;
+}
+#footerColumn3 {
+  padding: 2vmax;
+}
+}
+@media (min-width: 600px) {
+  .navbar .menu-items {
+    padding-top:50px;
+  }
+}
+@media (min-width: 800px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+
+  .navbar .menu-items {
+    padding-top:250px;
+  }
+
+  .navbar-flex {
+    flex-directon:row;
+  }
+
+  form {
+    visibility:visible;
+  }
+
+  #navbar-marquee {
+    visibility:visible; 
+    background-color: #555;
+    opacity: 0.5;
+    color: #eee;
+    padding: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 40vw;
+    max-width: 600px;
+    height: 30px;
+  }
+
+  .logo {
+    top: 5px;
+    left: 25px;
+  }
+
+  /* VIDEO HEADER TEXT */
+  #video-header {
+    align-items: flex-start;
+    justify-content:flex-end;   
+  }
+  #header-text {
+    max-width: 80vw;
+    padding-left: 8vw;
+  }
+
+  .typed {
+    text-align: left;
+  }
+
+  /* PRODUCT HIGHLIGHTS SECTION */
+  .productHighlight {
+    display: flex;
+    aspect-ratio: 1.8/1;
+    width:100vw;
+    height:fit-content;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .productHighlight-text {
+    position:relative;
+    top:0;
+    font-size: 1em;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    margin-top:auto;
+    margin-bottom:auto;
+    width: 50vw;
+    height: fit-content;
+    color: #ddd;
+  }
+
+  .productHighlight h2 {
+    font-family: "Gloock", serif;
+    font-size: 4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  .productHighlight a {
+    display: inline-block;
+    background: black;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    margin: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    width: fit-content;
+  }
+
+  #doyenne {
+    background-image: url(https://retail.onyxcontent.com/media/pages/globals/homepage/a8bbdf8c2d-1682087847/doyenne.jpg);
+    background-color: blue;
+    left: 0%;
+  }
+
+  #onyxTealight {
+    background-image: url(https://retail.onyxcontent.com/media/pages/globals/homepage/5e1c8a05b1-1682087849/tea_1.jpg);
+    background-color: #f3cfb3;
+    flex-flow: row-reverse nowrap;
+  }
+
+  #subscribeAndSave {
+    background-image: url(https://retail.onyxcontent.com/media/pages/globals/homepage/b42bb7ea6f-1679509910/onyx_sub_1.jpg);
+    flex-flow: row-reverse nowrap;
+  }
+
+  /* PRODUCT CAROUSEL SECTION */
+
+  #productCarousel-header p {
+    font-size:6rem;
+  }
+
+
+  /* GALLERY GRID SECTION */
+  
+  .gallery {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85vw;
+    height: 80vw;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 50% 50%;
+    gap: 20px;
+  }
+
+  .parent {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .child {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.3s;
+    z-index: 2;
+  }
+
+  .gallery p {
+    position: absolute;
+    bottom: -15px;
+    left: -3px;
+    color: #eee;
+    font-family: "Gloock", serif;
+    font-size: 8vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    z-index: 3;
+  }
+
+  .child:hover {
+    transform: scale(1.2);
+  }
+
+  #apparel {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/5badf3c709-1663618427/hp-tile-apparel.jpg");
+    background-color: purple;
+  }
+
+  #tea {
+    grid-column: 3 / 4;
+    grid-row: 1;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/542276090a-1663618440/hp-tile-tea.jpg");
+    background-color: yellow;
+  }
+
+  #bulk {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/139a25974b-1663618478/hp-tile-bulk.jpg");
+    background-color: blue;
+  }
+
+  #chocolate {
+    grid-column: 2 / 4;
+    grid-row: 2;
+    background-image: url("https://retail.onyxcontent.com/media/pages/globals/homepage/daf32d9213-1663618496/hp-tile-choco.jpeg");
+    background-color: brown;
+  }
+
+  /* FOOTER */
+  .footer-flex {
+    flex-flow: row wrap;
+    align-items:flex-start;
+  }
+  .footer-flex p {
+    text-align:left;
+  }
+  #footerColumn1 {
+    margin-top: 0;
+  }
+  #footerColumn3 {
+    width: 45vw;
+  }
+}
